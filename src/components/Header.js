@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
 const pages = ["home", "about", "contact"];
-const settings = ["login"];
+const settings = ["login", "signup"];
 
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

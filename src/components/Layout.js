@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import About from "./About";
 import Contact from "./Contact";
 import Login from "./Login";
+import Signup from "./Signup";
 
 const Layout = () => {
   return (
@@ -16,6 +17,7 @@ const Layout = () => {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
     </>

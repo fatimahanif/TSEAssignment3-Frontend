@@ -1,9 +1,11 @@
 import { MDBInput, MDBBtn, MDBCol } from "mdb-react-ui-kit";
 import { useState } from "react";
 
-const Login = () => {
+const Signup = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <div style={{ padding: "8% 12%", backgroundColor: "#ffffff" }}>
@@ -39,13 +41,26 @@ const Login = () => {
             borderWidth: 2,
           }}
         >
-          <h1 style={{ color: "#3F3B6C", fontWeight: "bolder" }}>Login</h1>
+          <h1
+            style={{ color: "#3F3B6C", fontWeight: "bolder", paddingTop: "5%" }}
+          >
+            Signup
+          </h1>
           <form
             style={{ width: "100%", padding: "5%" }}
             onSubmit={() => {
               console.log(email, password);
             }}
           >
+            <MDBInput
+              className="mb-4"
+              type="text"
+              id="name"
+              label="Name"
+              onChange={(value) => {
+                setName(value.target.value);
+              }}
+            />
             <MDBInput
               className="mb-4"
               type="email"
@@ -64,16 +79,25 @@ const Login = () => {
                 setPassword(value.target.value);
               }}
             />
+            <MDBInput
+              className="mb-4"
+              type="password"
+              id="confirmpassword"
+              label="Confirm Password"
+              onChange={(value) => {
+                setConfirmPassword(value.target.value);
+              }}
+            />
 
             <MDBBtn type="submit" color="secondary">
-              Login
+              Signup
             </MDBBtn>
 
             <p style={{ paddingTop: "5%", margin: 0 }}>
-              Don't have an account?{" "}
-              <a href="/signup" style={{ textDecoration: "underline" }}>
+              Already have an account?{" "}
+              <a href="/login" style={{ textDecoration: "underline" }}>
                 {" "}
-                Register Now
+                Login Now
               </a>
             </p>
           </form>
@@ -83,4 +107,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
