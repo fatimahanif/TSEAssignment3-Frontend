@@ -2,12 +2,17 @@ import { Alert, Snackbar } from "@mui/material";
 import axios from "axios";
 import { MDBInput, MDBBtn, MDBCol } from "mdb-react-ui-kit";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  
+  // cookie
+  const [cookie, setCookie] = useCookies(["userJWT"]);
+
   // for error handling
   const [open, setOpen] = useState(false);
   const errMsg = "Email already registered";
@@ -25,6 +30,8 @@ const Signup = () => {
       // console.log(err);
       // alert("Email is already registered");
     }
+    console.log(response.data.data.token);
+    setCookie("JWT", response.data.data.token, { path: "/" });
   };
 
   return (

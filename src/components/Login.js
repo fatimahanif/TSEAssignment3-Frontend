@@ -2,10 +2,14 @@ import { Alert, Snackbar } from "@mui/material";
 import axios from "axios";
 import { MDBInput, MDBBtn, MDBCol } from "mdb-react-ui-kit";
 import { useState } from "react";
+import { useCookies } from 'react-cookie';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // cookie
+  const [cookie, setCookie] = useCookies(['userJWT']);
 
   // error handling
   const [open, setOpen] = useState(false);
@@ -23,7 +27,8 @@ const Login = () => {
       // console.log(err);
       setOpen(true);
     }
-    console.log(response);
+    console.log(response.data.data.token);
+    setCookie('JWT', response.data.data.token, { path: '/' });
   };
 
   return (
