@@ -56,14 +56,57 @@ const AllProducts = () => {
         </p>
       </MDBRow>
       <MDBRow style={{ margin: 0 }}>
-        <MDBRow style={{ margin: 0, justifyContent: "space-evenly", alignItems: "center" }}>
+        <MDBRow
+          style={{
+            margin: 0,
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+        >
           {products.map((item, index) => (
             <MDBCol md="5" className="my-4">
-              <MDBCard className="p-4" style={{backgroundColor: "#624F82"}}>
+              <MDBCard className="p-4" style={{ backgroundColor: "#624F82" }}>
                 <MDBCardBody>
-                  <MDBCardTitle style={{fontSize: 26, color: "#fff", fontWeight: "bolder"}}>{item.name}</MDBCardTitle>
-                  <MDBCardText style={{fontSize: 20, color: "#fff", fontWeight: "lighter"}}>{item.detail}</MDBCardText>
+                  <MDBCardTitle
+                    style={{
+                      fontSize: 26,
+                      color: "#fff",
+                      fontWeight: "bolder",
+                    }}
+                  >
+                    {item.name}
+                  </MDBCardTitle>
+                  <MDBCardText
+                    style={{
+                      fontSize: 20,
+                      color: "#fff",
+                      fontWeight: "lighter",
+                    }}
+                  >
+                    {item.detail}
+                  </MDBCardText>
                 </MDBCardBody>
+                <Button
+                  sx={{
+                    borderColor: "#fff",
+                    width: "40%",
+                    alignSelf: "center",
+                    "&:hover": {
+                      borderColor: "#fff",
+                      borderWidth: 2,
+                    },
+                  }}
+                  size="large"
+                  variant="outlined"
+                  title="View Product Details"
+                >
+                  <Link
+                    to={`/products/${item._id}`}
+                    style={{ color: "white" }}
+                  >
+                    View Details >>
+                  </Link>
+                </Button>
               </MDBCard>
             </MDBCol>
           ))}

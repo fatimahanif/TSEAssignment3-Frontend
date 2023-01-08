@@ -10,6 +10,7 @@ import Profile from "./Profile";
 import NotFound from "./NotFound";
 import Services from "./Services";
 import AllProducts from "./AllProducts";
+import Product from "./Product";
 
 const Layout = () => {
   return (
@@ -25,6 +26,7 @@ const Layout = () => {
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/services" element={<Services />} />
         <Route exact path="/services/:serviceId/products" element={<AllProducts />} />
+        <Route exact path="/products/:productId" element={<Product />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

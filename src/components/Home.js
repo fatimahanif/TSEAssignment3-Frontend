@@ -25,7 +25,7 @@ const Home = () => {
           alt="slider 3"
         />
       </MDBCarousel>
-      <MDBRow style={{ margin: 0, padding: "3%" }}>
+      <MDBRow style={{ margin: 0, padding: "3% 8%" }}>
         <h2 style={{ color: "#3F3B6C", fontWeight: "bolder" }}>Services</h2>
         <p style={{ fontSize: 22 }}>
           Explore a wide range of services and their related products provided by
