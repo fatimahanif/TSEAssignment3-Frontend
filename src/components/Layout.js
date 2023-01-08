@@ -6,6 +6,7 @@ import About from "./About";
 import Contact from "./Contact";
 import Login from "./Login";
 import Signup from "./Signup";
+import Profile from "./Profile";
 
 const Layout = () => {
   return (
@@ -18,6 +19,7 @@ const Layout = () => {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/profile" element={<Profile />} />
       </Routes>
       <Footer />
     </>
