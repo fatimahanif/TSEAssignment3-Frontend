@@ -66,7 +66,7 @@ const Profile = () => {
             src="images/woman.png"
             alt="user"
             className="p-3 shadow-2-strong rounded-circle"
-            style={{ backgroundColor: "#A3C7D6" }}
+            style={{ backgroundColor: "#624F8280" }}
           />
         </MDBCol>
       </MDBRow>

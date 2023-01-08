@@ -51,7 +51,7 @@ const Signup = () => {
           col="12"
           md="6"
           style={{
-            backgroundColor: "#A3C7D6",
+            backgroundColor: "#624F8280",
             padding: "5%",
             display: "flex",
             alignItems: "center",
