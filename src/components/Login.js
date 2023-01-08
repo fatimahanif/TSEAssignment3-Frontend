@@ -55,7 +55,7 @@ const Login = () => {
             justifyContent: "center",
           }}
         >
-          <img width="70%" src="programming.png" alt="programming" />
+          <img width="70%" src="images/programming.png" alt="programming" />
         </MDBCol>
         <MDBCol
           col="12"

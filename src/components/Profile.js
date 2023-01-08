@@ -63,7 +63,7 @@ const Profile = () => {
         >
           <img
             width="35%"
-            src="woman.png"
+            src="images/woman.png"
             alt="user"
             className="p-3 shadow-2-strong rounded-circle"
             style={{ backgroundColor: "#A3C7D6" }}
