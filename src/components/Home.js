@@ -28,7 +28,7 @@ const Home = () => {
       <MDBRow style={{ margin: 0, padding: "3%" }}>
         <h2 style={{ color: "#3F3B6C", fontWeight: "bolder" }}>Services</h2>
         <p style={{ fontSize: 22 }}>
-          Explore a wide range of services an their related products provided by
+          Explore a wide range of services and their related products provided by
           our company that make you life easier. Our services range from process
           automation and management to video calling and chats. Explore and
           subscribe to the suitable pacakges now.

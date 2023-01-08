@@ -9,6 +9,7 @@ import Signup from "./Signup";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
 import Services from "./Services";
+import AllProducts from "./AllProducts";
 
 const Layout = () => {
   return (
@@ -23,6 +24,7 @@ const Layout = () => {
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/services" element={<Services />} />
+        <Route exact path="/services/:serviceId/products" element={<AllProducts />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
