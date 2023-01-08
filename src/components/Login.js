@@ -1,9 +1,30 @@
+import { Alert, Snackbar } from "@mui/material";
+import axios from "axios";
 import { MDBInput, MDBBtn, MDBCol } from "mdb-react-ui-kit";
 import { useState } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // error handling
+  const [open, setOpen] = useState(false);
+  const errMsg = "Incorrect username or password";
+
+  const submitData = async () => {
+    let response;
+    try {
+      response = await axios.post("http://localhost:3000/users/login", {
+        email,
+        password,
+      });
+    } catch (err) {
+      // alert("Incorrect username or password");
+      // console.log(err);
+      setOpen(true);
+    }
+    console.log(response);
+  };
 
   return (
     <div style={{ padding: "8% 12%", backgroundColor: "#ffffff" }}>
@@ -43,7 +64,8 @@ const Login = () => {
           <form
             style={{ width: "100%", padding: "5%" }}
             onSubmit={() => {
-              console.log(email, password);
+              // console.log(email, password);
+              submitData();
             }}
           >
             <MDBInput
@@ -51,6 +73,7 @@ const Login = () => {
               type="email"
               id="email"
               label="Email address"
+              required
               onChange={(value) => {
                 setEmail(value.target.value);
               }}
@@ -60,12 +83,14 @@ const Login = () => {
               type="password"
               id="password"
               label="Password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              required
               onChange={(value) => {
                 setPassword(value.target.value);
               }}
             />
 
-            <MDBBtn type="submit" color="secondary">
+            <MDBBtn type="button" color="secondary" onClick={submitData}>
               Login
             </MDBBtn>
 
@@ -79,6 +104,23 @@ const Login = () => {
           </form>
         </MDBCol>
       </div>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={() => {
+          setOpen(!open);
+        }}
+      >
+        <Alert
+          onClose={() => {
+            setOpen(!open);
+          }}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          {errMsg}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

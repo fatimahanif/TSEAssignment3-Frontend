@@ -1,3 +1,5 @@
+import { Alert, Snackbar } from "@mui/material";
+import axios from "axios";
 import { MDBInput, MDBBtn, MDBCol } from "mdb-react-ui-kit";
 import { useState } from "react";
 
@@ -6,6 +8,24 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  // for error handling
+  const [open, setOpen] = useState(false);
+  const errMsg = "Email already registered";
+
+  const submitForm = async () => {
+    let response;
+    try {
+      response = await axios.post("http://localhost:3000/users/signup", {
+        name,
+        email,
+        password,
+      });
+    } catch (err) {
+      setOpen(true);
+      // console.log(err);
+      // alert("Email is already registered");
+    }
+  };
 
   return (
     <div style={{ padding: "8% 12%", backgroundColor: "#ffffff" }}>
@@ -48,15 +68,16 @@ const Signup = () => {
           </h1>
           <form
             style={{ width: "100%", padding: "5%" }}
-            onSubmit={() => {
-              console.log(email, password);
-            }}
+            // onSubmit={() => {
+            //   console.log(email, password);
+            // }}
           >
             <MDBInput
               className="mb-4"
               type="text"
               id="name"
               label="Name"
+              required
               onChange={(value) => {
                 setName(value.target.value);
               }}
@@ -66,6 +87,7 @@ const Signup = () => {
               type="email"
               id="email"
               label="Email address"
+              required
               onChange={(value) => {
                 setEmail(value.target.value);
               }}
@@ -75,6 +97,8 @@ const Signup = () => {
               type="password"
               id="password"
               label="Password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              required
               onChange={(value) => {
                 setPassword(value.target.value);
               }}
@@ -84,12 +108,21 @@ const Signup = () => {
               type="password"
               id="confirmpassword"
               label="Confirm Password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              required
               onChange={(value) => {
                 setConfirmPassword(value.target.value);
               }}
             />
 
-            <MDBBtn type="submit" color="secondary">
+            <MDBBtn
+              type="button"
+              color="secondary"
+              onClick={() => {
+                submitForm();
+              }}
+              disabled={password != confirmPassword}
+            >
               Signup
             </MDBBtn>
 
@@ -103,6 +136,23 @@ const Signup = () => {
           </form>
         </MDBCol>
       </div>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={() => {
+          setOpen(!open);
+        }}
+      >
+        <Alert
+          onClose={() => {
+            setOpen(!open);
+          }}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          {errMsg}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
